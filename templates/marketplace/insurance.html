@@ -1,0 +1,797 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Marketplace Home - Arab Bank{% endblock %}
+
+ {% block extra_css %}
+ 
+ <style>
+    /* Reset and Base Styles */
+
+/* Main Container */
+
+
+.search-container {
+  display: flex;
+  width: 459px;
+  padding: 10px;
+  align-items: justify;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #c4c4c4;
+  font: 400 24px Roboto;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #c4c4c4;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  width: 100%;
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+.breadcrumb-content {
+  display: flex;
+  height: 100%;
+  padding-left: 150px;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-icon-container {
+  display: flex;
+  width: 24px;
+  padding: 2px 3px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breadcrumb-separator {
+  color: #1501ff;
+  font: 400 22px Roboto;
+}
+
+.breadcrumb-item {
+  color: #1501ff;
+  font: 400 22px Roboto;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.page-header {
+  display: flex;
+  height: 146px;
+  padding: 0 150px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-title {
+  color: #000;
+  font: 700 32px Roboto;
+  margin: 0;
+}
+
+.page-description {
+  color: #000;
+  font: 400 24px Roboto;
+  margin: 0;
+}
+
+/* Datasets Section */
+.datasets-section {
+  display: flex;
+  width: 100%;
+  padding: 20px 150px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #f5f5f5;
+}
+
+.datasets-container {
+  width: 100%;
+}
+
+.datasets-header {
+  display: flex;
+  width: 432px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.datasets-title {
+  color: #1501ff;
+  font: 700 24px Roboto;
+  margin: 0;
+}
+
+.datasets-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Dataset Cards */
+.dataset-card {
+  display: flex;
+  width: 100%;
+  max-width: 1130px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.dataset-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.dataset-header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.dataset-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dataset-icon-container {
+  width: 26px;
+  height: 26px;
+}
+
+.dataset-icon {
+  width: 26px;
+  height: 26px;
+  fill: #d9d9d9;
+}
+
+.dataset-title {
+  color: #3a3a3a;
+  font: 400 22px Roboto;
+  margin: 0;
+}
+
+.dataset-description {
+  color: #757575;
+  font: 400 16px Roboto;
+  margin: 0;
+}
+
+.dataset-footer {
+  width: 100%;
+}
+
+.dataset-metadata {
+  display: flex;
+  height: 33px;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.metadata-group {
+  display: flex;
+  align-items: center;
+}
+
+.metadata-item {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.metadata-label {
+  color: #1501ff;
+  margin-right: 10px;
+  font: 400 14px Roboto;
+}
+
+.metadata-value {
+  color: #9a9a9a;
+  font: 400 14px Roboto;
+}
+
+.dataset-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  background-color: #1501ff;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font: 700 14px Roboto;
+}
+
+.btn-secondary {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 4px;
+  border: 0.5px solid #1501ff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  cursor: pointer;
+  color: #1501ff;
+  font: 700 14px Roboto;
+}
+
+.btn-primary:hover {
+  background-color: #0f00d9;
+}
+
+.btn-secondary:hover {
+  background-color: #f8f8ff;
+}
+
+.btn-primary:focus,
+.btn-secondary:focus {
+  outline: 2px solid #1501ff;
+  outline-offset: 2px;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  height: 84px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 66px;
+  background-color: #001d7b;
+}
+
+.footer-logo {
+  width: 104px;
+  height: 25px;
+}
+
+.footer-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 177px;
+}
+
+.copyright-text {
+  color: #fff;
+  font: 400 11px Inter;
+  margin: 0;
+}
+
+.legal-links {
+  color: #fff;
+  font: 400 10px Inter;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .header-content {
+    padding: 0 50px;
+  }
+
+  .bank-name {
+    font-size: 28px;
+  }
+
+  .search-container {
+    width: 350px;
+  }
+
+  .search-input {
+    font-size: 20px;
+  }
+
+  .breadcrumb-content {
+    padding-left: 50px;
+  }
+
+  .page-header {
+    padding: 0 50px;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .page-description {
+    font-size: 20px;
+  }
+
+  .datasets-section {
+    padding: 20px 50px;
+  }
+
+  .dataset-title {
+    font-size: 20px;
+  }
+
+  .dataset-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .brand-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bank-name {
+    font-size: 24px;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .breadcrumb-content {
+    padding-left: 20px;
+  }
+
+  .page-header {
+    padding: 0 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .page-description {
+    font-size: 18px;
+  }
+
+  .datasets-section {
+    padding: 20px;
+  }
+
+  .dataset-metadata {
+    flex-direction: column;
+    height: auto;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .metadata-group {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .dataset-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .site-footer {
+    padding: 20px;
+    height: auto;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  .copyright-text {
+    font-size: 10px;
+  }
+
+  .legal-links {
+    font-size: 9px;
+    text-align: center;
+  }
+}
+
+/* Focus and Accessibility */
+.search-input:focus {
+  outline: 2px solid #1501ff;
+  outline-offset: 2px;
+}
+
+.dataset-card:focus-within {
+  outline: 2px solid #1501ff;
+  outline-offset: 2px;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+ </style>
+ 
+ {% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="data-marketplace">
+    <!-- Top Blue Bar -->
+    <div class="top-bar"></div>
+
+<header class="bank-header">
+    <div class="bg"></div>
+    <div class="bank-info-container">
+        <img
+            src="https://cdn.builder.io/api/v1/image/assets/2c58644cfee14a5596e07723351300e1/628d376b8c2d64ffb8ffb6c15eaae7f3a5ed05f6?placeholderIfAbsent=true"
+            alt="Arab Bank Logo"
+            class="bank-logo"
+        />
+        <h1 class="bank-name">ARAB BANK</h1>
+    </div>
+
+    <div class="search-container">
+          <input type="search" placeholder="Search you dataset..." class="search-input" aria-label="Search datasets">
+    </div>
+
+</header>
+
+    <!-- Header Section -->
+
+
+    <header class="main-header">
+      <div class="header-content">
+        <div class="brand-section">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5379a9221613a32d88c0b918839054391ed759af?width=192" alt="Arab Bank Logo" class="bank-logo">
+          <h1 class="bank-name">ARAB BANK</h1>
+        </div>
+        <div class="search-container">
+          <input type="search" placeholder="Search you dataset..." class="search-input" aria-label="Search datasets">
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="breadcrumb-content">
+        <div class="home-icon-container">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="home-icon" aria-hidden="true">
+            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" fill="#1501FF" stroke="#1501FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M9 22V12H15V22" fill="white"></path>
+            <path d="M9 22V12H15V22" stroke="#1501FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="breadcrumb-trail">
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item">CCII</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="page-header">
+        <h2 class="page-title">Credit Card Instant Issuance (CCII)</h2>
+        <p class="page-description">
+          An instant use credit card may allow you to access your credit soon after account opening, even if a physical card hasn't arrived in the mail yet. You can typically use instant credit cards for online shopping or add them to your digital wallet to use in stores.
+        </p>
+      </section>
+    </main>
+
+    <!-- Datasets Section -->
+    <section class="datasets-section">
+      <div class="datasets-container">
+        <header class="datasets-header">
+          <h3 class="datasets-title">Datasets</h3>
+        </header>
+
+        <div class="datasets-grid">
+          <!-- Dataset Card 1 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Dataset Card 2 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance June 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Dataset Card 3 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance May 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Dataset Card 4 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance April 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Dataset Card 5 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance March 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <!-- Dataset Card 6 -->
+          <article class="dataset-card">
+            <div class="dataset-content">
+              <header class="dataset-header">
+                <div class="dataset-title-row">
+                  <div class="dataset-icon-container">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+                      <circle cx="13" cy="13" r="13" fill="#D9D9D9"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="dataset-title">Credit Card Instance Issuance February 2025 Analytics</h4>
+                </div>
+                <p class="dataset-description">
+                  Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+              </header>
+
+              <footer class="dataset-footer">
+                <div class="dataset-metadata">
+                  <div class="metadata-group">
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created On</span>
+                      <span class="metadata-value">26/06/2025</span>
+                    </div>
+                    <div class="metadata-item">
+                      <span class="metadata-label">Created By</span>
+                      <span class="metadata-value">SAINATH</span>
+                    </div>
+                  </div>
+                  <div class="dataset-actions">
+                    <button class="btn-primary">Sample Data</button>
+                    <button class="btn-secondary">Request Access</button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

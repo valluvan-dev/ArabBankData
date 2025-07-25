@@ -1,0 +1,279 @@
+
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+:root {
+  --BLUE: #1501ff;
+  --GREY: #c4c4c4;
+  --L-GREY: #f5f5f5;
+}
+
+body {
+  background-color: var(--L-GREY);
+
+}
+
+.header-bar {
+  background-color: var(--BLUE);
+  color: white;
+  padding: 6px 0;
+}
+
+.star-icon {
+  width: 14px;
+}
+
+.nav-tabs .nav-link.active {
+  border: none;
+  /* border-bottom: 3px solid var(--BLUE); */
+  font-weight: 500;
+  color: black;
+  border-radius: 0;
+}
+
+ .nav-link {
+  font-size: 14px;
+  padding: 6px 12px;
+  color: black;
+}
+
+.metadata-title {
+  color: var(--BLUE);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.metadata-value {
+  font-size: 11px;
+}
+
+.btn-sample {
+  background-color: var(--BLUE);
+  color: white;
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
+.btn-request {
+  border-color: var(--BLUE);
+  color: var(--BLUE);
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
+.card-custom {
+  /* border-radius: 6px; */
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+}
+
+.table td {
+  vertical-align: top;
+  font-size: 13px;
+  /* border-color: #eee; */
+}
+
+.table td:first-child {
+  font-weight: 600;
+  width: 25%;
+}
+.nav-link:hover {
+  color: #1501ff;
+}
+
+.nav-underline .nav-link.active {
+  color: black; /* text color */
+  border-bottom-color: #1501ff; /* 👈 underline color */
+}
+  
+  
+#data-table-container {
+  margin-top: 20px;
+  /* max-width: 100%; */
+  margin-bottom: 50px;
+}
+
+#data-table-container .dataTables_wrapper {
+  overflow: auto;
+}
+
+#data-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 800px;
+}
+
+#data-table th, #data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#data-table th {
+  background-color: #f2f2f2;
+}
+
+  
+  
+  
+</style>
+{% endblock %}
+
+{% block header %}
+<header class="bank-header ">
+    <div class="bg container-fluid"></div>
+   
+
+    <div class="container bank-info-container d-flex justify-content-between align-items-center">
+        <div class="col-md-auto d-flex align-items-start gap-2">
+            <a href="{% url 'home' %}">
+            <img src="https://cdn.builder.io/api/v1/image/assets/2c58644cfee14a5596e07723351300e1/628d376b8c2d64ffb8ffb6c15eaae7f3a5ed05f6?placeholderIfAbsent=true"
+            alt="Arab Bank Logo" class="bank-logo" >
+              </a>
+            <h1 class="bank-name ms-4 ">ARAB BANK</h1>
+        </div>
+        <div class="">
+        <input type="search" class="form-control" style="width: 300px;" placeholder="Search your dataset..." aria-label="Search datasets">
+        </div>
+  </div>
+
+    
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mx-3">
+  <!-- Title + Metadata Row -->
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+    <h2 class="h6 fw-bold mb-0">CCII Eligibility/ CCII Eligibility June 2025 Dataset</h2>
+
+    <div class="d-flex gap-1 mt-2">
+      <div class="bg-white p-2">
+        <div class="metadata-title">RATING</div>
+        <div>
+          {% for i in '12345' %}
+          <img src="https://cdn.builder.io/api/v1/image/assets/f128057875594813815c3c25159940e3/c98723cc8bdbb4f16bbb2516b99c1b4a2bc75b40?placeholderIfAbsent=true" class="star-icon" alt="*" />
+          {% endfor %}
+        </div>
+      </div>
+      <div class="bg-white p-2">
+        <div class="metadata-title">STATUS</div>
+        <div class="metadata-value">Published</div>
+      </div>
+      <div class="bg-white p-2">
+        <div class="metadata-title">CREATED</div>
+        <div class="metadata-value">Jan 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <ul class="nav nav-underline d-flex gap-5">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Summary</a>
+    </li>
+    <li class="nav-item mx-5">
+      <a class="nav-link" href="#">Meta Data Details</a>
+    </li>
+    <li class="nav-item mx-5">
+      <a class="nav-link" href="#">Delivery</a>
+    </li>
+    <li class="nav-item mx-5">
+      <a class="nav-link" href="#">Terms of Use</a>
+    </li>
+  </ul>
+
+  
+</div>
+
+
+
+<div class="container mt-1 table border-2 rounded-2">
+  <div class="p-3 fw-bold border-bottom bg-white fs-6">Data Product Summary</div>
+  <table class="table mb-0">
+    <tr>
+      <td>Platform___</td>
+      <td>Schema: Credit_Card<br>Availability: API, Hive, JDBC/ODBC</td>
+    </tr>
+    <tr class="table-description">
+      <td>Description</td>
+      <td>
+        Provides a comprehensive view of customer eligibility for CCII based products and services,
+        integrating internal credit behavior, external bureau scores, and regulatory compliance checks.<br><br>
+        This data product supports decisions for loan origination, pre-approved offers, and credit limit
+        management, ensuring alignment with CCII thresholds and Central Bank requirements.<br><br>
+        Countries: <b>JO, PC, EG, AE, BH</b>
+      </td>
+    </tr>
+    <tr>
+      <td>Data Owner</td>
+      <td>Sainath Beeram &lt;sainath@arabbank.com.jo&gt;<br>Data Engineering Team → Data Office</td>
+    </tr>
+  </table>
+</div>
+
+<div class="container d-flex justify-content-end gap-2 m-3 btn-container">
+  <button id="sample-data-btn" class="btn btn-sample">Sample Dataset</button>
+  <button class="btn btn-request">Request Access</button>
+</div>
+
+
+<div class="container p-3 mt-4" id="data-table-container" style="display: none;">
+  <div class="bg-white p-3 shadow-sm rounded">
+    <h5 class="mb-3 fw-bold text-primary">Sample Dataset Viewer</h5>
+
+    <div class="table-responsive" style="max-height: 300px; overflow: auto; border: 1px solid #ddd; border-radius: 4px;">
+      <table id="data-table" class="table table-sm table-bordered mb-0" style="min-width: 800px;">
+        <thead class="table-light"></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+function populateTable(container, columns, rows) {
+  const table = $(container);
+
+  table.find('thead').empty();
+  table.find('tbody').empty();
+
+  // header
+  const headerRow = $('<tr>');
+  columns.forEach(col => headerRow.append(`<th>${col}</th>`));
+  table.find('thead').append(headerRow);
+
+  // rows
+  rows.forEach(row => {
+    const tr = $('<tr>');
+    row.forEach(cell => tr.append(`<td>${cell}</td>`));
+    table.find('tbody').append(tr);
+  });
+
+  $('#data-table-container').show();  // 👈 shows entire container
+}
+
+$('#sample-data-btn').on('click', function(e) {
+  e.preventDefault();
+
+  $.getJSON('{% url "get_sample_data" %}', function(data) {
+    populateTable('#data-table', data.columns, data.rows);
+  });
+});
+
+</script>
+
+{% endblock %}

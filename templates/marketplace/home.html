@@ -1,0 +1,479 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+ {% block extra_css %}
+    <style>
+        body{
+              font-family: "Segoe UI", Arial, sans-serif;
+        }
+        .hero-title { font-size: 2rem; font-weight: bold; }
+        .hero-subtitle, .hero-text { 
+            font-size: 1.10rem; 
+            font-family: 'Roboto',sans-serif;
+            letter-spacing: 0px;
+            word-spacing: 0px;
+        }
+        .stat-card { text-align: center; padding: 0.5rem; border: 1px solid #1501ff; box-shadow: 0 4px 4px rgba(0,0,0,0.15); border-radius: .5rem; }
+        .stat-number { font-size: 1.25rem; font-weight: bold; color: #1501ff; }
+        .dataset-card, .customer-category-card { background: #fff; padding: 1rem; border-radius: .5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+        .customer-category-card { border-top: 4px solid #1501ff;}
+        .view-btn, .request-btn { font-size: .85rem; }
+
+        .datasets-container {
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        }
+        .datasets-container::-webkit-scrollbar {
+        display: none;
+        }
+
+        .customer-category-card {
+        border-radius: 8px;
+        box-shadow: inset 0 4px 4px 0 #1501ff;
+        background: #fff;
+        padding: 0px;
+        height: 100%;
+        /* min-width:300px ; */
+        }
+        .category-main{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 100%;
+         }
+        .category-main{
+            margin-bottom: 150px;
+        }
+        .customer-category-card .category-header svg {
+        width: 36px; height: 36px; fill: #d9d9d9;
+        }
+        .category-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        }
+        .category-description {
+        color: #8c8c8c;
+        font-size: 0.9rem;
+        margin-top: .5rem;
+        }
+        .view-info-btn {
+        background: #1501ff;
+        color: #fff;
+        font-size: 0.75rem;
+        }
+        .view-info-btn:hover {
+        background: #1200cc;
+        }
+        .request-access-btn {
+        border: 1px solid #1501ff;
+        color: #1501ff;
+        background: #fff;
+        font-size: 0.75rem;
+        }
+        .request-access-btn:hover {
+        background: #f0f0ff;
+        }
+
+        /* .roboto-text {
+        font-family: 'Roboto', sans-serif;
+        word-spacing: 4px; */
+        /* line-height: ; */
+        
+   
+    </style>
+ {% endblock %}
+
+{% block title %}Marketplace Home - Arab Bank{% endblock %}
+
+{% block header %}
+<header class="bank-header ">
+    <div class="bg container-fluid"></div>
+   
+
+    <div class="container bank-info-container d-flex justify-content-between align-items-center">
+        <div class="col-md-auto d-flex align-items-start gap-2">
+            <img src="https://cdn.builder.io/api/v1/image/assets/2c58644cfee14a5596e07723351300e1/628d376b8c2d64ffb8ffb6c15eaae7f3a5ed05f6?placeholderIfAbsent=true"
+            alt="Arab Bank Logo" class="bank-logo" >
+            <h1 class="bank-name ms-4 ">ARAB BANK</h1>
+        </div>
+        <div class="">
+        <input type="search" class="form-control" style="width: 300px;" placeholder="Search your dataproduct..." aria-label="Search datasets">
+        </div>
+  </div>
+
+    
+    </div>
+</header>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container-fluid py-4 bg-light p-5">
+        <!-- Hero Section -->
+        <div class="row mb-4">
+            <div class="col-lg-6 roboto-text" style="text-align:justify;">
+                <h1 class="hero-title mb-4">Data Marketplace</h1>
+                <p class="hero-subtitle">
+                    Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+                </p>
+                <p class="hero-text">
+                    Whether you're in Risk, Credit, Compliance, Retail, or Corporate Banking, discover analytics-ready data products, curated datasets, and regulatory-aligned insights to accelerate decision-making.
+                </p>
+                <p class="hero-text">
+                    Empower your teams with self-service access to the data they need — faster, safer, and smarter — all while ensuring compliance with banking standards and data protection policies.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3 ms-5 mt-5">
+
+                    <div class="col mx-2 stat-card">
+                        <div>
+                            <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-number">9</div>
+                        <div class="fw-bold">Categories</div>
+                    </div>
+
+                    <div class="col mx-2 stat-card">
+                        <div>
+                            <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3H3V10H10V3Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 3H14V10H21V3Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 14H14V21H21V14Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M10 14H3V21H10V14Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-number">84</div>
+                        <div class="fw-bold">Data Views</div>
+                    </div>
+
+                    <div class="col mx-2 stat-card">
+                        <div>
+                             <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 9.39996L7.5 4.20996" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 15.9999V7.9999C20.9996 7.64918 20.9071 7.30471 20.7315 7.00106C20.556 6.69742 20.3037 6.44526 20 6.2699L13 2.2699C12.696 2.09437 12.3511 2.00195 12 2.00195C11.6489 2.00195 11.304 2.09437 11 2.2699L4 6.2699C3.69626 6.44526 3.44398 6.69742 3.26846 7.00106C3.09294 7.30471 3.00036 7.64918 3 7.9999V15.9999C3.00036 16.3506 3.09294 16.6951 3.26846 16.9987C3.44398 17.3024 3.69626 17.5545 4 17.7299L11 21.7299C11.304 21.9054 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9054 13 21.7299L20 17.7299C20.3037 17.5545 20.556 17.3024 20.7315 16.9987C20.9071 16.6951 20.9996 16.3506 21 15.9999Z" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M3.26953 6.95996L11.9995 12.01L20.7295 6.95996" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 22.08V12" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-number">284</div>
+                        <div class="fw-bold">Data Products</div>
+                    </div>
+
+                    <div class="col mx-2 stat-card">
+                        <div>
+                            <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V9M9 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V9M9 3V21M3 9V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H9M3 9H21M21 9V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H9" stroke="#A4A4A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        </div>
+                        <div class="stat-number">254</div>
+                        <div class="fw-bold">Reports</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% block Recent_Datasets %}
+
+        <!-- Recent Datasets -->
+        <h2 class="mb-3">Recent DataProducts</h2>
+
+        <section class="container-fluid  py-3">
+        <!-- <h2 class="fw-bold mb-3">Recent Datasets</h2> -->
+
+            <div class="datasets-container d-flex gap-3 px-2">
+                <!-- Card 1 -->
+                <div class="card shadow-sm" style="min-width: 400px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                            <h5 class="mb-0">Merchant Portal 2025 Analytics</h5>
+
+                        </div>
+                        <p class="text-muted small mt-2 mb-3">One line space to include an dummy text</p>
+
+                        <div class="d-flex gap-3 flex-wrap">
+                        <div>
+                            <div class="fw-bold text-secondary small">ORDERS</div>
+                            <div class="d-flex gap-1">
+                            <span class="badge px-4 bg-warning text-dark">1</span>
+                            <span class="badge px-4 bg-primary">1</span>
+                            <span class="badge px-5 bg-success">1 Pulling</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="fw-bold text-secondary small">Delivery</div>
+                            <span class="badge px-4 bg-secondary">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card shadow-sm" style="min-width: 400px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                            <h5 class="mb-0">Omnify Payments Analytics</h5>
+
+                        </div>
+                        <p class="text-muted small mt-2 mb-3">One line space to include an dummy text</p>
+
+                        <div class="d-flex gap-3 flex-wrap">
+                        <div>
+                            <div class="fw-bold text-secondary small">ORDERS</div>
+                            <div class="d-flex gap-1">
+                            <span class="badge px-4 bg-warning text-dark">1</span>
+                            <span class="badge px-4 bg-primary">1</span>
+                            <span class="badge px-5 bg-success">1 Pulling</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="fw-bold text-secondary small">Delivery</div>
+                            <span class="badge px-4 bg-secondary">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card shadow-sm" style="min-width: 400px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                            <h5 class="mb-0">Reflect Q1 Analytics</h5>
+
+                        </div>
+                        <p class="text-muted small mt-2 mb-3">One line space to include an dummy text</p>
+
+                        <div class="d-flex gap-3 flex-wrap">
+                        <div>
+                            <div class="fw-bold text-secondary small">ORDERS</div>
+                            <div class="d-flex gap-1">
+                            <span class="badge px-4 bg-warning text-dark">1</span>
+                            <span class="badge px-4 bg-primary">1</span>
+                            <span class="badge px-5 bg-success">1 Pulling</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="fw-bold text-secondary small">Delivery</div>
+                            <span class="badge px-4 bg-secondary">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card shadow-sm" style="min-width: 400px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                            <h5 class="mb-0">CCII Eligibility</h5>
+
+                        </div>
+                        <p class="text-muted small mt-2 mb-3">One line space to include an dummy text</p>
+
+                        <div class="d-flex gap-3 flex-wrap">
+                        <div>
+                            <div class="fw-bold text-secondary small">ORDERS</div>
+                            <div class="d-flex gap-1">
+                            <span class="badge px-4 bg-warning text-dark">1</span>
+                            <span class="badge px-4 bg-primary">1</span>
+                            <span class="badge px-5 bg-success">1 Pulling</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="fw-bold text-secondary small">Delivery</div>
+                            <span class="badge px-4 bg-secondary">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more cards here -->
+        </div>
+        </section>
+
+        {% endblock %}
+        <!-- Categories -->
+
+        {% block Categories %}
+
+        <h2 class="my-4">Categories</h2>
+        
+       <div class="category-main ">
+         <div class="row mt-4">
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+            
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Customer 360 Profile</h5>
+
+                </div>
+                <p>A unified, real-time view of each customer across all channels, products, and geographies.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Transactional Insights</h5>
+
+                </div>
+                <p>Categorized and enriched account transactions for customer behavior analysis and financial profiling.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col d-sm-none d-md-block col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Product Holding Snapshot</h5>
+
+                </div>
+              <p class="mb-4">Customer-level view of owned banking products  ( e.g.., loans, credit cards, deposits ).</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+            
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Customer 360 Profile</h5>
+
+                </div>
+                <p>A unified, real-time view of each customer across all channels, products, and geographies.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Transactional Insights</h5>
+
+                </div>
+                <p>Categorized and enriched account transactions for customer behavior analysis and financial profiling.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col d-sm-none d-md-block col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Product Holding Snapshot</h5>
+
+                </div>
+                <p class="mb-2">Customer-level view of owned banking products (e.g., loans, credit cards, deposits).</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+            
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Customer 360 Profile</h5>
+
+                </div>
+                <p>A unified, real-time view of each customer across all channels, products, and geographies.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col col-sm-6 col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center mt-3 gap-2">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Transactional Insights</h5>
+
+                </div>
+                <p>Categorized and enriched account transactions for customer behavior analysis and financial profiling.</p>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+            <div class="col d-sm-none d-md-block col-md-4 col-lg-4">
+            <div class="customer-category-card p-3">
+                <div class="d-flex align-items-center gap-2 mt-3">
+
+                        <div class="mb-4"><svg width="26" height="26"><circle cx="13" cy="13" r="13" fill="#D9D9D9"/></svg></div>
+                        <h5 class="mb-4">Product Holding Snapshot</h5>
+
+                </div>
+                <div class="mb-2"><p>Customer-level view of owned banking products (e.g., loans, credit cards, deposits).</p></div>
+                <div class="d-flex justify-content-end gap-2 mt-5">
+                    <a href="{% url 'ccii' %}"><button class="btn btn-primary btn-sm view-btn">View Info</button></a>
+                    <button class="btn btn-outline-primary btn-sm request-btn">Request Access</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+       </div>
+
+       {% endblock %}
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}

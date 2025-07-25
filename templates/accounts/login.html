@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Login - Data Marketplace{% endblock %}
+
+{% block content %}
+<main class="login-page">
+    <div class="hero-image-section">
+    </div>
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-wrapper">
+                <div class="form-content">
+                    <header class="page-header">
+                        <h1 class="page-title">Data Marketplace</h1>
+                    </header>
+
+                    <form class="login-form" method="post" role="form" aria-labelledby="page-title">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <div>{{ error }}</div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-fields">
+                            <div class="input-group">
+                                <label for="id_username" class="field-label">Username</label>
+                                <div class="input-container">
+                                    <input
+                                        type="text"
+                                        id="id_username"
+                                        name="username"
+                                        class="text-input"
+                                        placeholder="Enter your username"
+                                        required
+                                        autocomplete="username"
+                                        aria-describedby="username-help"
+                                        {% if form.username.value %}value="{{ form.username.value }}"{% endif %}
+                                    />
+                                </div>
+                                {% if form.username.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in form.username.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+
+                            <div class="input-group">
+                                <label for="id_password" class="field-label">Password</label>
+                                <div class="input-container">
+                                    <input
+                                        type="password"
+                                        id="id_password"
+                                        name="password"
+                                        class="text-input"
+                                        placeholder="Enter your password"
+                                        required
+                                        autocomplete="current-password"
+                                        aria-describedby="password-help"
+                                    />
+                                </div>
+                                {% if form.password.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in form.password.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button">
+                                Login
+                            </button>
+
+                            <div class="divider-text">or</div>
+
+                            <a href="{% url 'signup' %}" class="secondary-button">
+                                Signup
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

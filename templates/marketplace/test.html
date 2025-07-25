@@ -1,0 +1,148 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+
+{% block extra_css %}
+
+<style>
+.search-input::placeholder {
+    color: #c4c4c4;
+}
+.dataset-icon circle {
+    fill: #d9d9d9;
+}
+
+.search-container {
+  display: flex;
+  width: 359px;
+  padding: 10px;
+  align-items: justify;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #c4c4c4;
+  font: 400 24px Roboto;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #c4c4c4;
+}
+</style>
+
+{% endblock %}
+
+
+{% block header %}
+
+
+<header class="bank-header ">
+    <div class="bg container-fluid"></div>
+   
+
+    <div class="container bank-info-container d-flex justify-content-between align-items-center">
+        <div class="col-md-auto d-flex align-items-start gap-2">
+          <a href="{% url 'home' %}">
+            <img src="https://cdn.builder.io/api/v1/image/assets/2c58644cfee14a5596e07723351300e1/628d376b8c2d64ffb8ffb6c15eaae7f3a5ed05f6?placeholderIfAbsent=true"
+            alt="Arab Bank Logo" class="bank-logo" >
+              </a>
+            <h1 class="bank-name ms-4 ">ARAB BANK</h1>
+        </div>
+        <div class="">
+        <input type="search" class="form-control" style="width: 300px;" placeholder="Search your dataset..." aria-label="Search datasets">
+        </div>
+  </div>
+
+    
+    </div>
+</header>
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="test-main w-100">
+  
+<div class="data-marketplace">
+
+
+
+<nav aria-label="breadcrumb" class="bg-light px-5 py-3">
+  <ol class="breadcrumb container mb-0 ps-5">
+    <li class="breadcrumb-item"><a href="#">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+      xmlns="http://www.w3.org/2000/svg" class="home-icon" aria-hidden="true">
+      <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" fill="#1501FF" stroke="#1501FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M9 22V12H15V22" fill="white"></path>
+      <path d="M9 22V12H15V22" stroke="#1501FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a></li>
+    <li class="breadcrumb-item active" aria-current="page">CCII</li>
+  </ol>
+</nav>
+
+<section class="container px-5 py-2">
+  <h2 class="fw-bold">Credit Card Instant Issuance (CCII)</h2>
+  <p class="lead">
+    An instant use credit card may allow you to access your credit soon after account opening, even if a physical card hasn't arrived in the mail yet. You can typically use instant credit cards for online shopping or add them to your digital wallet to use in stores.
+  </p>
+</section>
+
+<div class="container-fluid bg-light">
+    <section class="container  bg-light p-5">
+    <h3 class="fw-bold mb-3" style="color: rgba(21, 1, 255, 1);">Datasets</h3>
+
+    {% for i in "123456" %}
+    <div class="card mb-3">
+        <div class="card-body">
+        <div class="d-flex align-items-center mb-2">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="dataset-icon" aria-hidden="true">
+            <circle cx="13" cy="13" r="13"></circle>
+            </svg>
+            <h5 class="card-title ms-2 mb-0">Credit Card Instance Issuance{% if forloop.first %}
+                <!-- empty -->
+            {% else %}
+                {% if forloop.counter0 == 1 %} Jan
+                {% elif forloop.counter0 == 2 %} Feb
+                {% elif forloop.counter0 == 3 %} Mar
+                {% elif forloop.counter0 == 4 %} Apr
+                {% elif forloop.counter0 == 5 %} May
+                {% endif %}
+            {% endif %}
+             2025 Analytics</h5>
+        </div>
+        <p class="card-text">
+            Welcome to the Internal Data Marketplace — a secure, centralized platform designed to democratize access to high-quality, governed data across Arab Bank.
+        </p>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="small text-muted">
+            <span class="fw-bold" style="color: rgba(21, 1, 255, 1);">Created On</span> 26/06/2025   <span class="fw-bold" style="color: rgba(21, 1, 255, 1);"> Created By</span> SAINATH
+            </div>
+            <div class="mt-2 mt-md-0">
+              
+            <a href="{% url 'sales' %}"><button class="btn btn-primary btn-sm">Sample Data</button></a>
+            <button class="btn btn-outline-primary btn-sm">Request Access</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    </section>
+</div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}{% endblock %}
